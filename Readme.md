@@ -40,4 +40,4 @@ UnityEditor.HostView:OnGUI()
 
 Play on-line: http://thorium.github.io/Volleyball
 
-Or get free from Google Play Android store: https://play.google.com/store/search?q=Arcade%20Volleyball&hl=en
+Or get free from Google Play Android store: https://play.google.com/store/apps/details?id=com.thoriumi.VollleyBall
