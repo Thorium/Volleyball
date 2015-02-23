@@ -37,3 +37,7 @@ Windows Store build fails:
 
 [FSharp.Core]Microsoft.FSharp.Collections.Array2DModule+MapIndexed@119' has an extra field 'array' of type 'T[,]' in the player and thus can't be serialized
 UnityEditor.HostView:OnGUI()
+
+Play on-line: http://thorium.github.io/Volleyball
+
+Or get free from Google Play Android store: https://play.google.com/store/search?q=Arcade%20Volleyball&hl=en
