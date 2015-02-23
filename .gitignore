@@ -1,0 +1,52 @@
+
+#ignore thumbnails created by OS
+[Tt]humbs.db
+.DS_Store*
+._*
+.Trashes
+Icon?
+ehthumbs.db
+
+#Ignore files build by Visual Studio
+*.obj
+*.exe
+*.pdb
+*.xap
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+[Bb]in
+[Dd]ebug*/
+*.lib
+*.sbr
+[Oo]bj/
+[Rr]elease*/
+_ReSharper*/
+[Tt]est[Rr]esult*/
+[Pp]ackages/
+AutoTest.Net*/
+*.sln.ide/
+
+#Ignore files build by MonoDevelop
+*.user
+*.userprefs
+*.pidb
+[Ee]xported[Oo]bj/
+
+#Ignore files build by Unity
+sysinfo.txt
+[Tt]emp/
+[Bb]uild
+[Bb]uilds
+[Ll]ibrary/
