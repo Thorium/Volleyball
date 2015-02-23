@@ -11,7 +11,119 @@
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <title>Arcade Volleyball by Thorium</title>
-  </head>
+		<script type='text/javascript' src='https://ssl-webplayer.unity3d.com/download_webplayer-3.x/3.0/uo/jquery.min.js'></script>
+		<script type="text/javascript">
+		<!--
+		var unityObjectUrl = "http://webplayer.unity3d.com/download_webplayer-3.x/3.0/uo/UnityObject2.js";
+		if (document.location.protocol == 'https:')
+			unityObjectUrl = unityObjectUrl.replace("http://", "https://ssl-");
+		document.write('<script type="text\/javascript" src="' + unityObjectUrl + '"><\/script>');
+		-->
+		</script>
+		<script type="text/javascript">
+		<!--
+			var config = {
+				width: 960, 
+				height: 600,
+				params: { enableDebugging:"0" }
+				
+			};
+			var u = new UnityObject2(config);
+
+			jQuery(function() {
+
+				var $missingScreen = jQuery("#unityPlayer").find(".missing");
+				var $brokenScreen = jQuery("#unityPlayer").find(".broken");
+				$missingScreen.hide();
+				$brokenScreen.hide();
+				
+				u.observeProgress(function (progress) {
+					switch(progress.pluginStatus) {
+						case "broken":
+							$brokenScreen.find("a").click(function (e) {
+								e.stopPropagation();
+								e.preventDefault();
+								u.installPlugin();
+								return false;
+							});
+							$brokenScreen.show();
+						break;
+						case "missing":
+							$missingScreen.find("a").click(function (e) {
+								e.stopPropagation();
+								e.preventDefault();
+								u.installPlugin();
+								return false;
+							});
+							$missingScreen.show();
+						break;
+						case "installed":
+							$missingScreen.remove();
+						break;
+						case "first":
+						break;
+					}
+				});
+				u.initPlugin(jQuery("#unityPlayer")[0], "Web.unity3d");
+			});
+		-->
+		</script>
+		<style type="text/css">
+		<!--
+		body {
+			font-family: Helvetica, Verdana, Arial, sans-serif;
+			background-color: white;
+			color: black;
+			text-align: center;
+		}
+		a:link, a:visited {
+			color: #000;
+		}
+		a:active, a:hover {
+			color: #666;
+		}
+		p.header {
+			font-size: small;
+		}
+		p.header span {
+			font-weight: bold;
+		}
+		p.footer {
+			font-size: x-small;
+		}
+		div.content {
+			margin: auto;
+			width: 960px;
+		}
+		div.broken,
+		div.missing {
+			margin: auto;
+			position: relative;
+			top: 50%;
+			width: 193px;
+		}
+		div.broken a,
+		div.missing a {
+			height: 63px;
+			position: relative;
+			top: -31px;
+		}
+		div.broken img,
+		div.missing img {
+			border-width: 0px;
+		}
+		div.broken {
+			display: none;
+		}
+		div#unityPlayer {
+			cursor: default;
+			height: 600px;
+			width: 960px;
+		}
+		-->
+		</style>
+
+	</head>
 
   <body>
     <div id="container">
@@ -30,14 +142,31 @@
 
         <hr>
 
-        <section id="main_content">
           <h2>
 <a id="arcade-volleyball" class="anchor" href="#arcade-volleyball" aria-hidden="true"><span class="octicon octicon-link"></span></a>Arcade Volleyball</h2>
 
 <p>Unity 3D-engine with F#-programming language</p>
+</div>
 
-<p><img src="screen.png" alt=""></p>
+		<div class="content">
+			<div id="unityPlayer">
+				<div class="missing">
+					<a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now!">
+						<img alt="Unity Web Player. Install now!" src="http://webplayer.unity3d.com/installation/getunity.png" width="193" height="63" />
+					</a>
+				</div>
+				<div class="broken">
+					<a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now! Restart your browser after install.">
+						<img alt="Unity Web Player. Install now! Restart your browser after install." src="http://webplayer.unity3d.com/installation/getunityrestart.png" width="193" height="63" />
+					</a>
+				</div>
+			</div>
+		</div>
+<br/>
+<div class="inner">
 
+<section id="main_content">
+		
 <p>This is multi-platform game for two players.
 You can play it with touchscreen or keyboard:</p>
 
@@ -59,35 +188,10 @@ You can play it with touchscreen or keyboard:</p>
 
 <p>Paragon games: <a href="http://en.wikipedia.org/wiki/Arcade_Volleyball">http://en.wikipedia.org/wiki/Arcade_Volleyball</a></p>
 
-<ul>
-<li>Windows tested, works correctly.</li>
-<li>Mac tested, works correctly.</li>
-<li>WebPlayer tested, works correctly.</li>
-<li>Android tested, works correctly.</li>
-<li>iOS not tested, builds fine.</li>
-<li>Windows Phone build fails.</li>
-<li>Windows Store build fails.</li>
-</ul>
-
-<p>Windows Phone build fails:</p>
-
-<ul>
-<li>Microsoft.FSharp.Text.StructuredPrintfImpl.Layout
-System.NullReferenceException: Object reference not set to an instance of an object.
-at Unity.CecilTools.Extensions.TypeReferenceExtensions.IsEnum(TypeReference type)</li>
-</ul>
-
-<p>Windows Store build fails:</p>
-
-<p>[FSharp.Core]Microsoft.FSharp.Collections.Array2DModule+MapIndexed@119' has an extra field 'array' of type 'T[,]' in the player and thus can't be serialized
-UnityEditor.HostView:OnGUI()</p>
-        </section>
-
         <footer>
           Arcade Volleyball is maintained by <a href="https://github.com/Thorium">Thorium</a><br>
           This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
         </footer>
-
         
       </div>
     </div>
