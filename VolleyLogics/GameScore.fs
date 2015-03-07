@@ -48,10 +48,11 @@ type GameScore() =
 
         playerLeftScore.text <- plPoints.ToString()
         playerRightScore.text <- prPoints.ToString()
-        i.rigidbody.isKinematic <- true
-        i.rigidbody.Sleep ()
-        i.rigidbody.isKinematic <- false
-        i.rigidbody.useGravity <- false
+        let r = i.GetComponent<Rigidbody>()
+        r.isKinematic <- true
+        r.Sleep ()
+        r.isKinematic <- false
+        r.useGravity <- false
         startTime <- Time.time + 3.0f
 
     member i.Start () =
@@ -59,5 +60,6 @@ type GameScore() =
         i.transform.position <- Vector3 (x, 4.f, 0.f)
 
     member i.Update () =
-        if not(i.rigidbody.useGravity) && Time.time > startTime then i.rigidbody.useGravity <- true
+        let r = i.GetComponent<Rigidbody>()
+        if not(r.useGravity) && Time.time > startTime then r.useGravity <- true
         if i.transform.position.y <= 0.381f then i.nextBall()

@@ -12,11 +12,11 @@ type PlayerControl() =
     [<SerializeField>]
     let mutable side = Unchecked.defaultof<PlayerKeys>
 
-    member i.MoveLeft () = i.rigidbody.AddForce(-1500.f, 0.f, 0.f)
-    member i.MoveRight () = i.rigidbody.AddForce(1500.f, 0.f, 0.f)
+    member i.MoveLeft () = i.GetComponent<Rigidbody>().AddForce(-1500.f, 0.f, 0.f)
+    member i.MoveRight () = i.GetComponent<Rigidbody>().AddForce(1500.f, 0.f, 0.f)
     member i.Jump y = 
         if y > float32 Screen.height / 2.f && i.transform.position.y < 0.9f then
-            i.rigidbody.AddForce(0.f, 10000.f, 0.f)
+            i.GetComponent<Rigidbody>().AddForce(0.f, 10000.f, 0.f)
 
     member i.Move half current = 
         if current < half then i.MoveLeft()
