@@ -62,4 +62,4 @@ type GameScore() =
     member i.Update () =
         let r = i.GetComponent<Rigidbody>()
         if not(r.useGravity) && Time.time > startTime then r.useGravity <- true
-        if i.transform.position.y <= 0.381f then i.nextBall()
+        if i.transform.position.y <= 0.4f then i.nextBall()
